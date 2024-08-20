@@ -1,0 +1,9 @@
+.content {
+  position: relative;
+  min-height: 280px;
+  padding: 12px;
+  background: $color-bg-content;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - var(--header-height));
+}

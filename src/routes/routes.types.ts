@@ -3,7 +3,7 @@ import {generatePath} from 'react-router-dom';
 export enum ROUTE_PATHS {
   HOME = '/',
   LOGIN = '/login',
-  WORK_CALENDAR = '/work-calendar',
+  WORK_CALENDAR = '/calendar',
 }
 
 export type RouteParamsType = object;
