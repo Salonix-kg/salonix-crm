@@ -6,6 +6,7 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import noInlineStyles from 'eslint-plugin-no-inline-styles';
 
 export default tseslint.config(
   {ignores: ['dist']},
@@ -25,9 +26,11 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
       'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
+      'no-inline-styles': noInlineStyles,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      'no-inline-styles/no-inline-styles': 'error',
       'react-refresh/only-export-components': [
         'warn',
         {allowConstantExport: true},
