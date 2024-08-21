@@ -4,4 +4,19 @@
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: $primary-color #f1f1f1;
+  font-family: Montserrat, sans-serif;
+  //font-family: 'Roboto', sans-serif;
+}
+
+.ant-card-bordered {
+  border: 1px solid $border;
+}
+.ant-card-body {
+  padding: 12px!important;
+}
+.ant-card-head {
+  padding: 0 12px!important;
+}
+.ant-table-thead > tr > th {
+  background-color: $white!important;
 }

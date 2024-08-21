@@ -1,0 +1,23 @@
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  & > div:last-child {
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .recentSalesTitle {
+    margin-top: 4px;
+  }
+
+  .title {
+    display: inline-block;
+  }
+
+  .label {
+    margin-left: 4px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
