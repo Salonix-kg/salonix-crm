@@ -1,17 +1,10 @@
-.selectContainer {
+.textInputContainer {
   position: relative;
   padding: 0 0 20px 0;
 
-  .select {
-    width: 100%;
-
-    & > div[class=ant-select-selector] {
-      border-radius: 4px;
-      box-shadow: none;
-    }
-    span[class=ant-select-selection-search] {
-
-    }
+  .textInput {
+    border-radius: 4px;
+    box-shadow: none;
   }
   .labelContainer {
     display: flex;
@@ -37,21 +30,18 @@
   .error {
     position: absolute;
     left: 4px;
-    bottom: 4px;
+    bottom: 2px;
     font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: $red;
   }
-  .errorSelect {
-    & > div[class=ant-select-selector] {
-      color: $red;
-      border-color: $red;
-      outline-color: $red;
-    }
+  .errorInput {
+    color: $red;
+    border-color: $red;
+    outline-color: $red;
   }
 }
-.withLabel {
- padding: 20px 0;
-}
-.withoutPadding {
-  padding: 0;
+.textInputWithLabel {
+  padding: 20px 0;
 }

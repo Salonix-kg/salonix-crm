@@ -11,7 +11,10 @@ import {
 
 import {Data} from '@features/Home/RecentSales';
 
-import {dateFormatter, serverReturnedDateFormat} from '@utils/dateFormatter.ts';
+import {
+  dateFormatter,
+  serverReturnedDateFormat,
+} from '@utils/date/dateFormatter.ts';
 
 const normalizer = (data: Data[]) => {
   return data.map(item => ({

@@ -1,3 +1,12 @@
+:root {
+  --fc-today-bg-color: $white;
+  --fc-now-indicator-color: #da495b;
+  --fc-non-business-color: #F2F2F7;
+  --fc-event-border-color: none;
+  --fc-event-text-color: $white;
+  --fc-event-bg-color: transparent;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +16,9 @@
   font-family: Montserrat, sans-serif;
   //font-family: 'Roboto', sans-serif;
 }
-
+body {
+  position: relative;
+}
 .ant-card-bordered {
   border: 1px solid $border;
 }
@@ -20,3 +31,48 @@
 .ant-table-thead > tr > th {
   background-color: $white!important;
 }
+
+.fc-timegrid-slot[data-time*="00:30"],
+.fc-timegrid-slot[data-time*="01:30"],
+.fc-timegrid-slot[data-time*="02:30"],
+.fc-timegrid-slot[data-time*="03:30"],
+.fc-timegrid-slot[data-time*="04:30"],
+.fc-timegrid-slot[data-time*="05:30"],
+.fc-timegrid-slot[data-time*="06:30"],
+.fc-timegrid-slot[data-time*="07:30"],
+.fc-timegrid-slot[data-time*="08:30"],
+.fc-timegrid-slot[data-time*="09:30"],
+.fc-timegrid-slot[data-time*="10:30"],
+.fc-timegrid-slot[data-time*="11:30"],
+.fc-timegrid-slot[data-time*="12:30"],
+.fc-timegrid-slot[data-time*="13:30"],
+.fc-timegrid-slot[data-time*="14:30"],
+.fc-timegrid-slot[data-time*="15:30"],
+.fc-timegrid-slot[data-time*="16:30"],
+.fc-timegrid-slot[data-time*="17:30"],
+.fc-timegrid-slot[data-time*="18:30"],
+.fc-timegrid-slot[data-time*="19:30"],
+.fc-timegrid-slot[data-time*="20:30"],
+.fc-timegrid-slot[data-time*="21:30"],
+.fc-timegrid-slot[data-time*="22:30"],
+.fc-timegrid-slot[data-time*="23:30"] {
+  border: 1px dotted $border!important; /* Убираем линии */
+}
+.fc-col-header-cell {
+  padding: 4px !important;
+  font-size: 14px;
+  font-family: Montserrat, sans-serif!important;
+  font-weight: 500;
+  & > div {
+    padding: 4px!important;
+    border-radius: 4px;
+    transition: .2s;
+    overflow-x: hidden;
+
+    &:hover {
+      background-color: $extra-blur!important;
+      cursor: pointer;
+    }
+  }
+}
+
