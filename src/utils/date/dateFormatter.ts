@@ -1,11 +1,15 @@
-import dayjs from 'dayjs';
+import dayjs, {Dayjs} from 'dayjs';
 
 export const humanReadableDateFormat = 'DD.MM.YYYY HH:mm';
+
+export const dateFormat = 'DD.MM.YYYY';
+
+export const calendarFormat = 'YYYY-MM-DD';
 
 export const serverReturnedDateFormat = 'ddd, DD MMM YYYY HH:mm:ss [GMT]';
 
 export type DateFormatterParams = {
-  date: string;
+  date: Date | string | Dayjs;
   parseFormat?: string;
   format?: string;
 };

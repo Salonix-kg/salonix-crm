@@ -1,0 +1,33 @@
+.eventContent {
+  background-color: rgba(22, 201, 165, 0.74);
+  width: 103%;
+  height: 100%;
+  border-radius: 4px;
+  padding: 8px;
+  transition: .4s;
+  border: 2px solid transparent;
+  z-index: 1;
+  overflow: hidden;
+
+  &:hover {
+    border: 2px solid $primary-color;
+  }
+
+  .client {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: -1px;
+  }
+
+  .serviceTitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.blocked {
+  background-color: rgba(215,215,215,0.93);
+}

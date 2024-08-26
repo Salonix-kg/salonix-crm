@@ -12,6 +12,7 @@ export type SelectProps = AntSelectProps & {
   required?: boolean;
   enableFilter?: boolean;
   withoutPadding?: boolean;
+  containerClassName?: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -25,6 +26,7 @@ export const Select = forwardRef<AntSelect, SelectProps>(
       required = true,
       withoutPadding = false,
       enableFilter,
+      containerClassName,
       ...props
     },
     ref,
@@ -36,10 +38,14 @@ export const Select = forwardRef<AntSelect, SelectProps>(
 
     return (
       <div
-        className={classNames(styles.selectContainer, {
-          [styles.withoutPadding]: withoutPadding,
-          [styles.withLabel]: label,
-        })}>
+        className={classNames(
+          styles.selectContainer,
+          {
+            [styles.withoutPadding]: withoutPadding,
+            [styles.withLabel]: label,
+          },
+          containerClassName,
+        )}>
         {label && (
           <div className={styles.labelContainer}>
             <span className={styles.label}>{label}</span>

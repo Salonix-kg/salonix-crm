@@ -1,8 +1,9 @@
 export const theme = {
   'primary-color': '#6950F3',
+  'primary-blur': '#A5DFF8',
   'color-bg-container': '#fff',
   'color-bg-content': '#f1f1f1',
-  blur: '#fff3',
+  blur: '#d7d7d770',
   black: '#000',
   'black-blur': '#000b5',
   white: '#fff',

@@ -1,5 +1,6 @@
 import {IconContext} from 'react-icons';
 import {BrowserRouter} from 'react-router-dom';
+import dayjs from 'dayjs';
 import {Provider} from 'jotai';
 
 import {ConfigProvider} from 'antd';
@@ -8,6 +9,10 @@ import ruRU from 'antd/lib/locale/ru_RU';
 import {AppRoute} from '@routes/appRoute';
 
 import {themeConfig} from '@styles/theme.config.ts';
+
+import 'dayjs/locale/ru.js';
+
+dayjs.locale('ru');
 
 export const App = () => {
   return (
