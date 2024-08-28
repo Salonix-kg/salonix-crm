@@ -5,7 +5,6 @@ export type BlockedTimeEvent = {
   title: string;
   start: string;
   end: string;
-  type: string;
   bookedTime: BlockedTime;
 };
 
@@ -17,7 +16,6 @@ export const blockedTimeToEvent = (
     title: item.title,
     start: `${item.date} ${item.startTime}`,
     end: `${item.date} ${item.endTime}`,
-    type: 'booked',
     bookedTime: item,
   }));
 };

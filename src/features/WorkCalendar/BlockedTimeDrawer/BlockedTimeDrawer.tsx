@@ -26,6 +26,8 @@ import {theme} from '@styles/theme.ts';
 
 import {BlockedTimeSchema, blockedTimeSchema} from './BlockedTime.schema.ts';
 
+import styles from './BlockedTimeDrawer.module.scss';
+
 export const BlockedTimeDrawer = () => {
   const [defaultValues, setDefaultValues] = useAtom(blockedTimeFormAtom);
   const [isOpen, setIsOpen] = useAtom(isBlockedTimeDrawerOpenAtom);
@@ -88,6 +90,7 @@ export const BlockedTimeDrawer = () => {
       width={520}
       title="Добавить заблокированное время"
       onClose={handleClose}
+      classNames={{header: styles.header}}
       open={isOpen}
       footer={
         <Button

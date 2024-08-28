@@ -1,0 +1,63 @@
+.container {
+  padding: 14px 4px;
+  padding-left: 20px;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    background-color: $blur;
+    padding-left: 23px;
+
+    .hidePriceOnHover {
+      display: none;
+    }
+
+    .remove {
+      display: inline-flex!important;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 4px;
+    border-radius: 12px;
+    background-color: $primary-color;
+    transition: .2s;
+  }
+
+  &:hover::before {
+    width: 6px;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .duration {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey;
+  }
+
+  .price {
+    font-size: 15px;
+    font-weight: 500;
+    transition: .4s;
+  }
+
+  .remove {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    display: none!important;
+    transition: .4s;
+  }
+}

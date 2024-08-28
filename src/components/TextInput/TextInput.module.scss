@@ -1,6 +1,6 @@
 .textInputContainer {
   position: relative;
-  padding: 0 0 20px 0;
+  padding: 0;
 
   .textInput {
     border-radius: 4px;
@@ -43,5 +43,8 @@
   }
 }
 .textInputWithLabel {
-  padding: 20px 0;
+  padding: 20px 0 0 0;
+}
+.textInputWithError {
+  padding: 0 0 20px 0;
 }

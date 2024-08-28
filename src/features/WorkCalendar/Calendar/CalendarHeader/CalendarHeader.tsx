@@ -38,7 +38,7 @@ export const CalendarHeader = ({date, setDate}: CalendarHeaderProps) => {
           placeholder="Выберите мастера"
           value="Все"
           options={masters?.map(master => ({
-            label: master.title,
+            label: master.fullName,
             value: master.id,
           }))}
         />

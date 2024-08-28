@@ -14,15 +14,18 @@ import {
   isBlockedTimeDrawerOpenAtom,
 } from '@atoms/calendar/blockedTime';
 import {mastersAtom} from '@atoms/calendar/masters';
+import {isOrderDrawerOpenAtom, orderFormAtom} from '@atoms/calendar/order';
 import {ordersAtom} from '@atoms/calendar/orders';
 
 import {useCalendar} from '@hooks/useCalendar.ts';
 
-import {blockedTimeToEvent} from '@utils/calendar/blockedTimeToEvent.ts';
+import {blockedTimeToEvent, mastersToResource} from '@utils/calendar';
+import {orderToEvent} from '@utils/calendar';
 
+import {BlockedTimeEvent} from './BlockedTimeEvent';
 import {CalendarHeader} from './CalendarHeader';
-import {EventContent} from './EventContent';
 import {HoveredBlock} from './HoveredBlock';
+import {OrderEvent} from './OrderEvent';
 
 import styles from './Calendar.module.scss';
 
@@ -30,11 +33,13 @@ export const Calendar = () => {
   const [isBlockedTimeOpen, setIsBlockedTimeOpen] = useAtom(
     isBlockedTimeDrawerOpenAtom,
   );
+  const [isOrderOpen, setIsOrderOpen] = useAtom(isOrderDrawerOpenAtom);
   const masters = useAtomValue(mastersAtom);
   const blockedTime = useAtomValue(blockedTimesAtom);
   const orders = useAtomValue(ordersAtom);
 
   const setBlockedTimeForm = useSetAtom(blockedTimeFormAtom);
+  const setOrderForm = useSetAtom(orderFormAtom);
 
   const [date, setDate] = useState(dayjs());
   const [indicatingDate, setIndicatingDate] = useState<Dayjs | null>(null);
@@ -44,7 +49,7 @@ export const Calendar = () => {
   const [isIndicateDropdownOpen, setIsIndicateDropdownOpen] = useState(false);
 
   const {hoveredBlockData, setHoveredBlockData} = useCalendar(
-    isIndicateDropdownOpen || isBlockedTimeOpen,
+    isIndicateDropdownOpen || isBlockedTimeOpen || isOrderOpen,
   );
 
   const handleDateClick = useCallback(
@@ -75,10 +80,18 @@ export const Calendar = () => {
     setIsBlockedTimeOpen,
   ]);
 
-  const handleAddNewVisitClick = useCallback(() => {}, []);
+  const handleAddNewVisitClick = useCallback(() => {
+    setIsIndicateDropdownOpen(false);
+    setOrderForm({
+      date: date,
+      startTime: indicatingDate,
+      masterId: +indicatingMasterId!,
+    });
+    setIsOrderOpen(true);
+  }, [date, indicatingDate, indicatingMasterId, setIsOrderOpen, setOrderForm]);
 
   const events = useMemo(
-    () => [...orders, ...blockedTimeToEvent(blockedTime)],
+    () => [...orderToEvent(orders), ...blockedTimeToEvent(blockedTime)],
     [orders, blockedTime],
   );
 
@@ -92,19 +105,26 @@ export const Calendar = () => {
           plugins={[resourceTimeGridPlugin, interactionPlugin]}
           initialDate={date.format('YYYY-MM-DD')}
           initialView="resourceTimeGridDay"
-          resources={masters}
+          resources={mastersToResource(masters)}
           allDaySlot={false}
           slotDuration="00:10:00"
           slotLabelInterval="00:30:00"
           slotLabelFormat={{timeStyle: 'short'}}
           nowIndicator={date.isSame(dayjs(), 'day')}
           headerToolbar={false}
-          eventContent={props => (
-            <EventContent
-              {...props}
-              setHoveredBlockData={setHoveredBlockData}
-            />
-          )}
+          eventContent={props =>
+            props.event?._def?.extendedProps?.order ? (
+              <OrderEvent
+                {...props}
+                setHoveredBlockData={setHoveredBlockData}
+              />
+            ) : (
+              <BlockedTimeEvent
+                {...props}
+                setHoveredBlockData={setHoveredBlockData}
+              />
+            )
+          }
           events={events}
           dateClick={handleDateClick}
           height="100%"

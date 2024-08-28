@@ -28,6 +28,7 @@ export const TextInput = forwardRef<AntInput, TextInputProps>(
       <div
         className={classNames(styles.textInputContainer, containerClassName, {
           [styles.textInputWithLabel]: label,
+          [styles.textInputWithError]: error,
         })}>
         {label && (
           <div className={styles.labelContainer}>

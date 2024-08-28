@@ -1,0 +1,40 @@
+.container {
+  cursor: pointer;
+  padding: 4px;
+  transition: .2s;
+  border-radius: 8px;
+  user-select: none;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: $blur;
+  }
+
+  &:active {
+    border: 1px solid $border;
+  }
+
+
+  .icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    background-color: #E7E8FF;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .phoneNumber {
+    font-size: 15px;
+    font-weight: 400;
+    color: $grey
+  }
+}
