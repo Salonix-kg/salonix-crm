@@ -1,63 +1,46 @@
 import {atom} from 'jotai';
 
+import {ordersMock} from '@atoms/calendar/orders/orders.mock.ts';
+
 export type OrderStatus = 'booked' | 'pending' | 'completed';
 
-export type OrderData = {
-  status: OrderStatus;
-  client: OrderClient;
+export type ServiceCategory = {
+  id: number;
+  title: string;
 };
 
-export type Order = {
-  resourceId: string;
+export type OrderService = {
+  id: number;
   title: string;
-  start: string;
-  end: string;
-  order: OrderData;
+  /**
+   * @type duration
+   * @description в минутах
+   */
+  duration: number;
+  price: number;
+  category: ServiceCategory;
+};
+
+export type OrderMaster = {
+  id: number;
+  fullName: string;
 };
 
 export type OrderClient = {
   id: number;
   fullName: string;
+  phoneNumber: string;
 };
 
-export const ordersAtom = atom<Order[]>([
-  {
-    resourceId: '1',
-    title: 'Укладка волос феном',
-    start: '2024-08-26T13:00:00',
-    end: '2024-08-26T13:30:00',
-    order: {
-      status: 'booked',
-      client: {
-        id: 1,
-        fullName: 'Асанов Усон',
-      },
-    },
-  },
-  {
-    resourceId: '2',
-    title: 'Укладка волос феном',
-    start: '2024-08-26T11:00:00',
-    end: '2024-08-26T11:30:00',
-    order: {
-      status: 'pending',
-      client: {
-        id: 1,
-        fullName: 'Асанов Усон',
-      },
-    },
-  },
-  {
-    resourceId: '3',
-    title: 'Укладка волос феном',
-    start: '2024-08-26T12:00:00',
-    end: '2024-08-26T13:30:00',
-    order: {
-      status: 'completed',
-      client: {
-        id: 1,
-        fullName: 'Асанов Усон',
-      },
-    },
-  },
-]);
+export type Order = {
+  id: number;
+  date: string;
+  startTime: string;
+  endTime: string;
+  status: OrderStatus;
+  services: OrderService[];
+  master: OrderMaster;
+  client: OrderClient | null;
+};
+
+export const ordersAtom = atom<Order[]>([...ordersMock]);

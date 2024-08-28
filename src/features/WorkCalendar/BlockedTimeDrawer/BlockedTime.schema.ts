@@ -1,14 +1,7 @@
-import dayjs, {Dayjs} from 'dayjs';
 import z from 'zod';
 
+import {nullableDayjsSchema} from '@utils/date';
 import {required} from '@utils/formHelpers.ts';
-
-const nullableDayjsSchema = z.union([
-  z.null(),
-  z.custom<Dayjs>(val => dayjs.isDayjs(val), {
-    message: required(),
-  }),
-]);
 
 export const blockedTimeSchema = z.object({
   title: z.string({required_error: required()}),
