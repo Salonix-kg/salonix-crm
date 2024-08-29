@@ -1,5 +1,6 @@
 import {useCallback, useMemo} from 'react';
 import {FaCalendarDays} from 'react-icons/fa6';
+import {GrCatalog} from 'react-icons/gr';
 import {IoHome} from 'react-icons/io5';
 import {useNavigate} from 'react-router-dom';
 
@@ -34,6 +35,17 @@ export const Menu = () => {
         label: 'Календарь',
         icon: <FaCalendarDays size={20} />,
         key: ROUTE_PATHS.WORK_CALENDAR,
+      },
+      {
+        label: 'Каталог',
+        icon: <GrCatalog size={20} />,
+        key: ROUTE_PATHS.MENU_SERVICE,
+        children: [
+          {
+            label: 'Меню обслуживания',
+            key: ROUTE_PATHS.MENU_SERVICE,
+          },
+        ],
       },
     ],
     [],

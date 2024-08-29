@@ -2,6 +2,7 @@ import {Navigate} from 'react-router-dom';
 
 import {Home} from '@features/Home';
 import {Login} from '@features/Login';
+import {MenuService} from '@features/MenuService/MenuService';
 import {Profile} from '@features/Profile';
 import {WorkCalendar} from '@features/WorkCalendar';
 
@@ -31,5 +32,9 @@ export const ROUTES = [
     path: ROUTE_PATHS.PROFILE,
     element: <Profile />,
     withoutLayout: false,
+  },
+  {
+    path: ROUTE_PATHS.MENU_SERVICE,
+    Component: <MenuService />,
   },
 ];
