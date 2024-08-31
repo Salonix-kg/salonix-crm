@@ -1,12 +1,15 @@
 import {Route, Routes} from 'react-router-dom';
+import {useAtomValue} from 'jotai';
 
 import {AppLayout} from '@components/AppLayout';
 
+import {isAuthAtom} from '@atoms/auth';
+
 import {AUTH_ROUTES, ROUTES} from './routes';
 
-const isAuth = true;
-
 export const AppRoute = () => {
+  const isAuth = useAtomValue(isAuthAtom);
+
   if (!isAuth) {
     return (
       <Routes>
@@ -14,7 +17,7 @@ export const AppRoute = () => {
           <Route
             key={route.path}
             path={route.path}
-            element={route.Component}></Route>
+            element={route.element}></Route>
         ))}
       </Routes>
     );
@@ -27,7 +30,7 @@ export const AppRoute = () => {
           <Route
             key={route.path}
             path={route.path}
-            element={route.Component}></Route>
+            element={route.element}></Route>
         ))}
       </Routes>
     </AppLayout>
