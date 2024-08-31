@@ -10,13 +10,22 @@ export type TextInputProps = InputProps & {
   error?: string;
   required?: boolean;
   containerClassName?: string;
+  withoutPadding?: boolean;
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 export const TextInput = forwardRef<AntInput, TextInputProps>(
   (
-    {label, error, containerClassName, className, required = true, ...props},
+    {
+      label,
+      error,
+      containerClassName,
+      className,
+      withoutPadding,
+      required = true,
+      ...props
+    },
     ref,
   ) => {
     const SelectedInput = useMemo(
@@ -27,8 +36,8 @@ export const TextInput = forwardRef<AntInput, TextInputProps>(
     return (
       <div
         className={classNames(styles.textInputContainer, containerClassName, {
-          [styles.textInputWithLabel]: label,
-          [styles.textInputWithError]: error,
+          [styles.textInputWithLabel]: !withoutPadding && label,
+          [styles.textInputWithError]: !withoutPadding,
         })}>
         {label && (
           <div className={styles.labelContainer}>
