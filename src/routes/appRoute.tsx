@@ -24,15 +24,18 @@ export const AppRoute = () => {
   }
 
   return (
-    <AppLayout>
-      <Routes>
-        {ROUTES.map(route => (
+    <Routes>
+      {ROUTES.map(route =>
+        route.withoutLayout ? (
+          <Route key={route.path} path={route.path} element={route.element} />
+        ) : (
           <Route
             key={route.path}
             path={route.path}
-            element={route.element}></Route>
-        ))}
-      </Routes>
-    </AppLayout>
+            element={<AppLayout>{route.element}</AppLayout>}
+          />
+        ),
+      )}
+    </Routes>
   );
 };

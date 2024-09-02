@@ -76,7 +76,7 @@ export const useCalendar = (blockMoving: boolean) => {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [blockMoving]);
+  }, [blockMoving, isMobile]);
 
   return {hoveredBlockData, setHoveredBlockData};
 };

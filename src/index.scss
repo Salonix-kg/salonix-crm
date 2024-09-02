@@ -81,3 +81,15 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.ant-avatar {
+  background-color: #E7E8FF;
+  color: $primary-color;
+  font-size: 15px!important;
+  cursor: pointer;
+  transition: .2s;
+
+  &:hover {
+    border: 1px solid $border;
+  }
+}

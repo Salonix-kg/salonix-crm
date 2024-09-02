@@ -4,6 +4,7 @@ export enum ROUTE_PATHS {
   HOME = '/',
   LOGIN = '/login',
   WORK_CALENDAR = '/calendar',
+  PROFILE = '/profile',
 }
 
 export type RouteParamsType = object;
@@ -18,4 +19,5 @@ export const ROUTE_URLS: Record<
   HOME: () => generatePath(ROUTE_PATHS.HOME),
   LOGIN: () => generatePath(ROUTE_PATHS.LOGIN),
   WORK_CALENDAR: () => generatePath(ROUTE_PATHS.WORK_CALENDAR),
+  PROFILE: () => generatePath(ROUTE_PATHS.PROFILE),
 };

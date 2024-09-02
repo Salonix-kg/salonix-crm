@@ -2,6 +2,7 @@ import {Navigate} from 'react-router-dom';
 
 import {Home} from '@features/Home';
 import {Login} from '@features/Login';
+import {Profile} from '@features/Profile';
 import {WorkCalendar} from '@features/WorkCalendar';
 
 import {ROUTE_PATHS} from '@routes/routes.types.ts';
@@ -25,5 +26,10 @@ export const ROUTES = [
   {
     path: ROUTE_PATHS.WORK_CALENDAR,
     element: <WorkCalendar />,
+  },
+  {
+    path: ROUTE_PATHS.PROFILE,
+    element: <Profile />,
+    withoutLayout: false,
   },
 ];

@@ -11,6 +11,8 @@ export type CardPopoverProps = {
   setPopoverOpen?: (isOpen: boolean) => void;
   onOk?: () => void;
   onCancel?: () => void;
+  footer?: ReactNode;
+  holder?: ReactNode;
 };
 
 export const CardPopover = ({
@@ -19,6 +21,8 @@ export const CardPopover = ({
   setPopoverOpen,
   onOk,
   onCancel,
+  footer,
+  holder,
 }: CardPopoverProps) => {
   return (
     <Popover
@@ -27,23 +31,27 @@ export const CardPopover = ({
       content={
         <>
           {content}
-          <Flex justify="space-between" gap={12}>
-            <Button size="large" block onClick={onCancel}>
-              Назад
-            </Button>
-            <Button size="large" block type="primary" onClick={onOk}>
-              Сохранить
-            </Button>
-          </Flex>
+          {footer || (
+            <Flex justify="space-between" gap={12}>
+              <Button size="large" block onClick={onCancel}>
+                Назад
+              </Button>
+              <Button size="large" block type="primary" onClick={onOk}>
+                Сохранить
+              </Button>
+            </Flex>
+          )}
         </>
       }
       placement="bottomRight"
       trigger="click"
       open={isPopoverOpen}
       onOpenChange={setPopoverOpen}>
-      <Button type="text">
-        <SlOptionsVertical size={16} />
-      </Button>
+      {holder || (
+        <Button type="text">
+          <SlOptionsVertical size={16} />
+        </Button>
+      )}
     </Popover>
   );
 };
