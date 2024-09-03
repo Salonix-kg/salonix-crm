@@ -1,9 +1,14 @@
 import {atom} from 'jotai';
 
 export type CategoryItem = {
-  label: string;
-  sum: number;
-  time: string;
+  id: number;
+  title: string;
+  /**
+   * @type duration
+   * @description в минутах
+   */
+  duration: number;
+  price: number;
 };
 
 export type Category = {
@@ -18,19 +23,22 @@ export const categoriesAtom = atom<Category[]>([
     key: '1',
     children: [
       {
-        label: 'Стрижка',
-        sum: 500,
-        time: '45min',
+        title: 'Стрижка',
+        price: 500,
+        duration: 45,
+        id: 1,
       },
       {
-        label: 'Цвет волос',
-        sum: 400,
-        time: '45min',
+        title: 'Цвет волос',
+        price: 400,
+        duration: 45,
+        id: 2,
       },
       {
-        label: 'Укладка волос феном',
-        sum: 200,
-        time: '45min',
+        title: 'Укладка волос феном',
+        price: 200,
+        duration: 45,
+        id: 3,
       },
     ],
   },
@@ -39,19 +47,22 @@ export const categoriesAtom = atom<Category[]>([
     key: '2',
     children: [
       {
-        label: 'Стрижка',
-        sum: 500,
-        time: '45min',
+        title: 'Стрижка',
+        price: 500,
+        duration: 45,
+        id: 4,
       },
       {
-        label: 'Цвет волос',
-        sum: 400,
-        time: '45min',
+        title: 'Цвет волос',
+        price: 400,
+        duration: 45,
+        id: 5,
       },
       {
-        label: 'Укладка волос феном',
-        sum: 200,
-        time: '45min',
+        title: 'Укладка волос феном',
+        price: 200,
+        duration: 45,
+        id: 6,
       },
     ],
   },

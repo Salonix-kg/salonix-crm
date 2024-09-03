@@ -1,11 +1,66 @@
 .container {
-    padding: 30px
+  padding: 30px;
+
+  @include max-width-mobile {
+    padding: 0px;
+  }
+}
+
+:global {
+  .ant-tabs-tab {
+    border-width: 0px !important;
+    background-color: $white !important;
+    padding: 15px !important;
+
+    &:hover {
+      background-color: $blur !important;
+    }
+  }
+}
+
+.headerButton {
+  margin-top: 20px;
 }
 
 .categoryTitle {
-    padding: 20px
+  padding: 20px;
 }
 
 .tabTitle {
-    padding-right: 70px
+  font-weight: 500;
+  font-size: 15px;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+
+  @include max-width-mobile {
+    width: auto;
+  }
+}
+
+.dropdownButton {
+  border-radius: 20px;
+}
+
+.addCategoryTitle {
+  color: $primary-color;
+}
+
+.categoryCount {
+  border: $border 1px solid;
+  padding: 5px;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  color: $grey;
+  margin-right: -7px;
+
+  @include max-width-mobile {
+    margin-left: 15px;
+    margin-right: -10px;
+  }
 }
