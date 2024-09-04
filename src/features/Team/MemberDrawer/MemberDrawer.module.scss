@@ -1,0 +1,21 @@
+
+.body {
+  padding: 0!important;
+  background: $color-bg-content;
+  position: relative!important;
+
+  .header {
+    padding: 12px;
+    border-bottom: 1px solid $border;
+    background: white;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .content {
+    padding: 12px;
+  }
+}

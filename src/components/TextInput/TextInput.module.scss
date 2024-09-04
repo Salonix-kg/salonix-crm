@@ -16,8 +16,8 @@
   }
   .label {
     padding-left: 4px;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
     display: inline-block;
   }
   .notRequired {
@@ -43,7 +43,7 @@
   }
 }
 .textInputWithLabel {
-  padding: 20px 0 0 0;
+  padding-top: 20px;
 }
 .textInputWithError {
   padding-bottom: 20px;

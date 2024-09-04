@@ -5,4 +5,9 @@ const token: Partial<AliasToken> = {
   colorPrimary: '#6950F3',
 };
 
-export const themeConfig: ThemeConfig = {token};
+export const themeConfig: ThemeConfig = {
+  token,
+  components: {
+    Segmented: {},
+  },
+};

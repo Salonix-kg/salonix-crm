@@ -36,7 +36,7 @@ export const TextInput = forwardRef<AntInput, TextInputProps>(
     return (
       <div
         className={classNames(styles.textInputContainer, containerClassName, {
-          [styles.textInputWithLabel]: !withoutPadding && label,
+          [styles.textInputWithLabel]: !withoutPadding && !!label,
           [styles.textInputWithError]: !withoutPadding,
         })}>
         {label && (

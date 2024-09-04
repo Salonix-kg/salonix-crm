@@ -4,6 +4,7 @@ import {Home} from '@features/Home';
 import {Login} from '@features/Login';
 import {MenuService} from '@features/MenuService/MenuService';
 import {Profile} from '@features/Profile';
+import {Team} from '@features/Team';
 import {WorkCalendar} from '@features/WorkCalendar';
 
 import {ROUTE_PATHS} from '@routes/routes.types.ts';
@@ -35,6 +36,10 @@ export const ROUTES = [
   },
   {
     path: ROUTE_PATHS.MENU_SERVICE,
-    Component: <MenuService />,
+    element: <MenuService />,
+  },
+  {
+    path: ROUTE_PATHS.TEAM,
+    element: <Team />,
   },
 ];

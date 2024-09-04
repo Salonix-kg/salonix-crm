@@ -1,10 +1,10 @@
 import {SortedServices} from '@atoms/calendar/order';
-import {Service} from '@atoms/calendar/services';
+import {Service} from '@atoms/services';
 
-export const sortServicesByCategory = (
-  services: Service[],
-): SortedServices[] => {
-  const groupedServices: {[key: string]: SortedServices} = {};
+export const sortServicesByCategory = <T extends Service>(
+  services: T[],
+): SortedServices<T>[] => {
+  const groupedServices: {[key: string]: SortedServices<T>} = {};
 
   services.forEach(service => {
     const categoryKey = service.category.id;
