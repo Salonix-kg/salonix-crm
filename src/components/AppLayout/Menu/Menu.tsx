@@ -1,6 +1,7 @@
 import {useCallback, useMemo} from 'react';
 import {FaCalendarDays} from 'react-icons/fa6';
 import {GrCatalog} from 'react-icons/gr';
+import {HiUsers} from 'react-icons/hi2';
 import {IoHome} from 'react-icons/io5';
 import {useNavigate} from 'react-router-dom';
 
@@ -46,6 +47,11 @@ export const Menu = () => {
             key: ROUTE_PATHS.MENU_SERVICE,
           },
         ],
+      },
+      {
+        label: 'Команда',
+        icon: <HiUsers size={20} />,
+        key: ROUTE_PATHS.TEAM,
       },
     ],
     [],

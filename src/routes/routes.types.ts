@@ -5,8 +5,8 @@ export enum ROUTE_PATHS {
   LOGIN = '/login',
   WORK_CALENDAR = '/calendar',
   PROFILE = '/profile',
-  MENU_SERVICE = '/MENU_SERVICE',
-
+  MENU_SERVICE = '/menu-service',
+  TEAM = '/team',
 }
 
 export type RouteParamsType = object;
@@ -23,4 +23,5 @@ export const ROUTE_URLS: Record<
   WORK_CALENDAR: () => generatePath(ROUTE_PATHS.WORK_CALENDAR),
   MENU_SERVICE: () => generatePath(ROUTE_PATHS.MENU_SERVICE),
   PROFILE: () => generatePath(ROUTE_PATHS.PROFILE),
+  TEAM: () => generatePath(ROUTE_PATHS.TEAM),
 };

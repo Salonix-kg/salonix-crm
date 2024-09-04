@@ -1,10 +1,10 @@
 import {atom} from 'jotai';
 
-import {Service, ServiceCategory} from '@atoms/calendar/services';
+import {ServiceCategory} from '@atoms/calendar/services';
 
-export type SortedServices = {
+export type SortedServices<T> = {
   category: ServiceCategory;
-  services: Service[];
+  services: T[];
 };
 
 export const isOrderDrawerOpenAtom = atom(false);
