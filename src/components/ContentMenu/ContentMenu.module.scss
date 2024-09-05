@@ -1,0 +1,76 @@
+.container {
+  height: 100%;
+  position: relative;
+
+  .menu {
+    position: relative;
+    width: 240px;
+    height: calc(100% + 24px);
+    background: $white;
+    border-right: 1px solid $border;
+    z-index: 100;
+    margin-top: -12px;
+    margin-left: -12px;
+    padding: 8px;
+    transition: .2s;
+
+    @media (max-width: 1024px) {
+      & {
+        position: absolute;
+      }
+    }
+
+    .menuItems {
+      border-inline-end: none;
+    }
+
+    .toggle {
+      position: absolute;
+      top: 8px;
+      right: -18px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: $white;
+      border: 1px solid $border;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: grey;
+      cursor: pointer;
+      user-select: none;
+
+
+      &:hover {
+        border-color: $primary-color;
+        color: $primary-color!important;
+      }
+
+      &:active {
+        outline: 1px solid $extra-blur!important;
+      }
+    }
+    .closedToggle {
+      right: -40px;
+      transform: rotate(-180deg);
+      opacity: .8;
+    }
+  }
+
+  .closedMenu {
+    width: 0;
+    padding: 0;
+
+  }
+
+  .content {
+    width: 100%;
+    padding-left: 12px;
+
+    @media (max-width: 1024px) {
+      & {
+        padding-left: 0;
+      }
+    }
+  }
+}
