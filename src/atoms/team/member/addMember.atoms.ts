@@ -1,7 +1,7 @@
 import {toast} from 'react-toastify';
 import {atom} from 'jotai';
 
-import {ProfileSchema} from '@features/Team/MemberDrawer/Profile';
+import {ProfileSchema} from '@features/Team/MembersTable/MemberDrawer/Profile';
 
 import {membersAtom} from '@atoms/team/members';
 

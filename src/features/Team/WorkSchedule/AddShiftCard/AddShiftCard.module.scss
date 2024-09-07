@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  height: 40px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: .2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > svg {
+    display: none;
+  }
+
+  &:hover {
+    background: $blur;
+
+    & > svg {
+      display: block;
+    }
+  }
+}
+
+.menu {
+  margin: -11px!important;
+  border-inline-end: none!important;
+}

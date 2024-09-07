@@ -1,7 +1,7 @@
 import {ChangeEvent, useCallback, useEffect} from 'react';
 import {Controller, UseFormReturn} from 'react-hook-form';
 import {MdOutlineAddAPhoto} from 'react-icons/md';
-import {useAtomValue} from 'jotai/index';
+import {useAtomValue} from 'jotai';
 
 import {Col, DatePicker, Flex, Row, Upload} from 'antd';
 import {RcFile, UploadChangeParam} from 'antd/es/upload';
