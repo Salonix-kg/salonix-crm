@@ -1,0 +1,24 @@
+.header {
+  padding: 12px;
+  background-color: $white;
+  border-radius: 8px;
+  border: 1px solid $blur;
+}
+
+.table {
+  margin-top: 20px;
+  .row {
+    & > td {
+      padding: 4px!important;
+    }
+  }
+
+  .master {
+    margin: 0 8px;
+
+    .hours {
+      font-size: 12px;
+      color: $grey
+    }
+  }
+}

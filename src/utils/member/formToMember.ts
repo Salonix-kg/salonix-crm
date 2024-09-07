@@ -1,4 +1,4 @@
-import {ProfileSchema} from '@features/Team/MemberDrawer/Profile';
+import {ProfileSchema} from '@features/Team/MembersTable/MemberDrawer/Profile';
 
 import {Member} from '@atoms/team/members';
 
