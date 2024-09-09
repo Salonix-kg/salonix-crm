@@ -1,10 +1,9 @@
 import {useCallback, useMemo, useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {DownOutlined} from '@ant-design/icons';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useAtomValue, useSetAtom} from 'jotai';
 
-import {Col, Dropdown, Menu, Modal, Row, Space, Tabs, Typography} from 'antd';
+import {Col, Modal, Row, Tabs} from 'antd';
 
 import {Button} from '@components/Button';
 import {ServiceCard} from '@components/ServiceCard';
@@ -18,55 +17,15 @@ import {useResponsive} from '@hooks/useResponsive';
 
 import {theme} from '@styles/theme';
 
+import {ServiceDrawer} from '../ServiceDrawer';
+
 import {
   CreateCategorySchema,
   createCategorySchema,
 } from './CreateCategory.schema';
+import {TabHeader} from './TabHeader';
 
 import styles from '../MenuService.module.scss';
-
-type TabHeaderProps = {
-  category: Category;
-  editCallback: (category: Category) => void;
-};
-
-const getMenuData = ({category, editCallback}: TabHeaderProps) => [
-  {
-    label: 'Редактировать',
-    key: '1',
-    onClick: () => editCallback(category),
-  },
-  {
-    label: 'Добавить услуги',
-    key: '2',
-  },
-  {
-    label: 'Окончательно удалить',
-    key: '3',
-  },
-];
-
-const getMenu = ({category, editCallback}: TabHeaderProps) => (
-  <Menu items={getMenuData({category, editCallback})} />
-);
-
-const TabHeader = ({category, editCallback}: TabHeaderProps) => (
-  <Row justify="space-between" align="middle">
-    <Typography.Title className={styles.categoryTitle} level={4}>
-      {category.label}
-    </Typography.Title>
-    <Dropdown
-      className={styles.dropdownButton}
-      overlay={getMenu({category, editCallback})}>
-      <Button size="middle" type="default">
-        <Space>
-          Действие
-          <DownOutlined />
-        </Space>
-      </Button>
-    </Dropdown>
-  </Row>
-);
 
 export const CategoriesTabs = () => {
   const categories = useAtomValue(categoriesAtom);
@@ -79,17 +38,24 @@ export const CategoriesTabs = () => {
       resolver: zodResolver(createCategorySchema),
     });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null,
+  );
 
-  const handleOpenModal = useCallback(() => setIsModalOpen(true), []);
+  const handleOpenModal = useCallback(() => setIsOpenModal(true), []);
 
-  const handleCloseModal = useCallback(() => setIsModalOpen(false), []);
+  const handleCloseModal = useCallback(() => setIsOpenModal(false), []);
 
   const handleEditCategory = useCallback((category: Category) => {
     handleOpenModal();
     setValue('title', category.label);
     setValue('key', category.key);
     setValue('children', category.children);
+  }, []);
+
+  const handleAddService = useCallback((category: Category) => {
+    setSelectedCategory(category);
   }, []);
 
   const handleCreateCategory = useCallback((data: CreateCategorySchema) => {
@@ -99,7 +65,7 @@ export const CategoriesTabs = () => {
       children: data.children ?? [],
     };
     setCategory(value);
-    reset();
+    reset({});
     handleCloseModal();
   }, []);
 
@@ -118,7 +84,11 @@ export const CategoriesTabs = () => {
         ),
         children: (
           <div>
-            <TabHeader category={category} editCallback={handleEditCategory} />
+            <TabHeader
+              category={category}
+              editCallback={handleEditCategory}
+              handleAddService={handleAddService}
+            />
             {category.children.map(service => (
               <>
                 <ServiceCard
@@ -147,7 +117,11 @@ export const CategoriesTabs = () => {
         closable: false,
         children: categories.map(category => (
           <div>
-            <TabHeader category={category} editCallback={handleEditCategory} />
+            <TabHeader
+              category={category}
+              editCallback={handleEditCategory}
+              handleAddService={handleAddService}
+            />
             {category.children.map(service => (
               <>
                 <ServiceCard
@@ -169,7 +143,7 @@ export const CategoriesTabs = () => {
     <>
       <Modal
         title="Добавить категорию"
-        open={isModalOpen}
+        open={isOpenModal}
         onCancel={handleCloseModal}
         footer={
           <Row gutter={[18, 6]} justify="space-between">
@@ -216,7 +190,7 @@ export const CategoriesTabs = () => {
               value={value || ''}
               onChange={onChange}
               onBlur={onBlur}
-              label="Название категории"
+              label="Описание"
               size="large"
               error={error?.message}
             />
@@ -233,6 +207,10 @@ export const CategoriesTabs = () => {
         tabPosition={isMobile ? 'top' : 'left'}
         items={tabsItems}
         destroyInactiveTabPane={false}
+      />
+      <ServiceDrawer
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
     </>
   );

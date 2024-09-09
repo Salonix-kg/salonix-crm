@@ -1,10 +1,6 @@
 import {Card, Col, Row, Typography} from 'antd';
 
-import {Button} from '@components/Button';
-
 import {useResponsive} from '@hooks/useResponsive';
-
-import {theme} from '@styles/theme';
 
 import {CategoriesTabs} from './CategoriesTabs';
 
@@ -22,7 +18,7 @@ export const MenuService = () => {
             Просмотр услуг, предлагаемых вашей компанией, и управление ими.
           </Typography.Text>
         </Col>
-        <Col xs={12} md={4}>
+        {/* <Col xs={12} md={4}>
           <Button
             className={styles.headerButton}
             bg={theme.black}
@@ -32,7 +28,7 @@ export const MenuService = () => {
             onClick={() => {}}>
             Указать
           </Button>
-        </Col>
+        </Col> */}
       </Row>
       <br />
       <br />
